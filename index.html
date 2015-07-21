@@ -1,0 +1,53 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Hello React</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.13.3/JSXTransformer.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div id="content"></div>
+    <div id="time" style="color:green;font-weight:bold;font-size:18px;"></div>
+    <script type="text/jsx">
+      var VideoSource = React.createClass({displayName: 'VideoSource',
+        render: function() {
+          return (
+            React.createElement('source', {'src': './mick_fanning.mp4', 'type': 'video/mp4'})
+          );
+        }
+      });
+// 
+      var VideoBox = React.createClass({displayName: 'VideoBox',
+        render: function() {
+          return (
+            React.createElement('video', {
+              id: 'video',
+              className: "commentBox",
+              width: '600',
+              height: '450',
+              "autoPlay": 'autoplay',
+              'controls': 'controls'
+            })
+          );
+        }
+      });
+      React.render(
+        React.createElement(VideoBox, null),
+        document.getElementById('content')
+      );
+
+      React.render(
+        React.createElement(VideoSource, null),
+        document.getElementById('video')
+      );
+
+      function updateTime(e) {
+        $('#time').html(e.target.currentTime);
+      }
+      document.getElementById('video').addEventListener('timeupdate', updateTime, false);
+    </script>
+  </body>
+</html>
