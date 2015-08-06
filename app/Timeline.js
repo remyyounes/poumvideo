@@ -31,7 +31,7 @@ var Timeline = React.createClass({
   renderLinks() {
     var {links} = this.props;
     return links.map((link, i) => {
-      return <LinkEditor link={link} index={i}/>
+      return <LinkEditor link={link} index={i} onChange={this.props.onLinkChanged}/>
     });
   },
 

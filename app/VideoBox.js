@@ -17,7 +17,7 @@ var VideoBox = React.createClass({
     return {
       links: [
         {text: "", start: 0, end: 5, x: 100, y:100, width: 100, height: 20, href: 'http://surfline.com'},
-        {text: "", start: 3, end: 8, x: 100, y:200, href: 'http://google.com'},
+        {text: "", start: 3, end: 8, x: 100, y:200, width: 20, height: 100, href: 'http://google.com'},
         {text: "", start: 10, end: 13, x: 100, y:200},
         {text: "", start: 13, end: 16, x: 100, y:200},
       ]
@@ -82,7 +82,13 @@ var VideoBox = React.createClass({
 
   onLinksUpdated(activeLinks) {
     this.setState({activeLinks});
-  }
+  },
+
+  onLinkChanged(index, link) {
+    var links = this.props.links;
+    this.props.update
+    links[index] = link;
+  },
 
 });
 

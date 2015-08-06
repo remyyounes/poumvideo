@@ -1,6 +1,7 @@
 import React from "react";
 
 var LinkEditor = React.createClass({
+
   render() {
     return (<div>
       <input value={this.props.link.text}/>
@@ -10,8 +11,15 @@ var LinkEditor = React.createClass({
       <input value={this.props.link.height}/>
       <input value={this.props.link.x}/>
       <input value={this.props.link.y}/>
-      <input value={this.props.link.href}/>
+      <input value={this.props.link.href} onChange={this.onChange.bind(null, "href")} name="href"/>
     </div>);
+  },
+
+  onChange(attribute, e){
+    var value = e.target.value;
+    var link = this.props.link;
+    link[attribute] = value;
+    this.props.onChange(this.props.index, link);
   }
 });
 
